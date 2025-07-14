@@ -1,0 +1,173 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.headUpper{
+    width:100vw;
+    height: 60px;
+    background-color: rgba(245, 222, 179, 0);
+    display: flex;
+    transition: all;
+    transition-duration: 0.1s;
+    transition-property: all;
+    transition-delay: 0s;
+    transition-timing-function: linear;
+    color: white;
+    position: fixed;
+    
+}
+.headUpper:hover{
+    background-color: white;
+    color: black;
+}
+
+.navList{
+    display: flex;
+    list-style-type: none;
+    font-size: 13px;
+    padding: 15px;
+}
+
+.navItems{
+    padding: 7px;
+}
+
+.navigation-bar{
+    width:50%;
+    
+    height:60px
+    
+}
+
+
+
+.navigation-bar2{
+    width:50%;
+ height:60px;
+padding: 15px;
+display: flex;
+justify-content: right;
+
+}
+
+.i{
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+}
+
+.homePage{
+    height: 100vh;
+    width: 100vw;
+    
+    overflow:hidden;
+    position: absolute;
+}
+
+
+.mainTitle{
+    font-family: "Pacifico", cursive;
+    font-weight: 900;
+    font-size: 120px;
+    color: white;
+    width:600px;
+    height:300px;
+    text-align: center;
+}
+.lowerHead{
+    
+    width:100vw;
+    height:700px;
+    margin-top:60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+
+
+
+.homePageVideo{
+    width:100vw;
+}
+
+
+.pics{
+    width:100vw;
+    height: 100vh;
+    background-color: red;
+    display: flex;
+}
+
+.pic1{
+  width:50%;
+  height: 100%;
+  background-color: green;
+  overflow: hidden;
+}
+
+.pic1 img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pic2{
+  width:50%;
+  height: 100%;
+  background-color: green;
+  overflow: hidden;
+}
+
+.pic2 img{
+     width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+/* .////////////////////////////////////////////// */
+
+ .marquee-container {
+      width: 100vw;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      background-color: white;
+      color: black;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      font-family: "Winky Rough", sans-serif;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 20s linear infinite;
+      font-size: 20px;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
