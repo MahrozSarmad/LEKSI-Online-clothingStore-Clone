@@ -301,3 +301,747 @@ body::-webkit-scrollbar {
   background-color: #333;
   color: #fff;
 }
+
+
+/* ////////////////////////////////////////////////////////////////////// */
+
+
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 16px 16px;
+}
+
+h2 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.product-grid-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 0 0 auto;
+    overflow: hidden;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 24px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 22px 0 0;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.product-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #111;
+    color: #fff;
+    border: none;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.carousel-btn:hover {
+    background: #333;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+}
+
+.carousel-btn.prev {
+    left: 16px;
+    display: none;
+}
+
+.carousel-btn.next {
+    right: 10px;
+    display: flex;
+}
+
+/* Simple approach: always show both buttons for now */
+.carousel-btn.prev,
+.carousel-btn.next {
+    display: flex;
+}
+
+@media (max-width: 900px) {
+    .carousel-btn.prev {
+        left: 16px;
+    }
+    .carousel-btn.next {
+        right: 5px;
+    }
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    width: 380px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: none;
+    scroll-snap-align: start;
+    position: relative;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+
+.product-card img {
+    width: 380px;
+    height: 450px;
+    object-fit: cover;
+    background: #eaeaea;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+.product-image {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    border-radius: 0;
+    width: 280px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.product-image-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0;
+    width: 280px;
+    height: 350px;
+    object-fit: cover;
+}
+
+/* Only apply hover effect if hover image exists */
+.product-card:has(.product-image-hover):hover .product-image {
+    opacity: 0;
+}
+
+.product-card:has(.product-image-hover):hover .product-image-hover {
+    opacity: 1;
+}
+
+.product-info {
+    padding: 12px 0 0 0;
+    width: 100%;
+    text-align: left;
+}
+
+.product-title {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #222;
+    text-transform: none;
+}
+
+.product-price {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 400;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    text-transform: none;
+}
+
+
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.view-all {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 1rem;
+    color: #222;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+
+.view-all:hover {
+    color: #888;
+    text-decoration: underline;
+}
+
+/* Featured Product Section */
+.featured-product-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 32px;
+}
+
+.featured-product-card {
+    background: #fff;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: none;
+    position: relative;
+}
+
+.featured-product-card img {
+    width: 280px;
+    height: 350px;
+    object-fit: cover;
+    background: #eaeaea;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+@media (max-width: 900px) {
+    .product-grid {
+        gap: 20px;
+    }
+    .product-card {
+        width: 320px;
+        min-width: 280px;
+    }
+    .product-card img {
+        width: 320px;
+        height: 400px;
+        min-height: 350px;
+    }
+    .featured-product-card {
+        width: 320px;
+        min-width: 280px;
+    }
+    .featured-product-card img {
+        width: 320px;
+        height: 400px;
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-grid {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .product-card {
+        width: 100%;
+    }
+    .product-card img {
+        width: 100%;
+        height: 60vw;
+        min-height: 120px;
+    }
+    .featured-product-card {
+        width: 100%;
+    }
+    .featured-product-card img {
+        width: 100%;
+        height: 60vw;
+        min-height: 120px;
+    }
+}
+
+/* Split Layout Section */
+.split-layout {
+    display: flex;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f6f3;
+    min-height: 700px;
+    position: relative;
+}
+
+.text-section {
+    flex: 0 0 40%;
+    padding: 60px 60px 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #f7f4ed;
+    box-sizing: border-box;
+}
+
+.text-content {
+    max-width: 400px;
+    margin: 0;
+    width: 100%;
+}
+
+.header-text {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #222;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 40px;
+    line-height: 1.3;
+}
+
+.main-heading {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.description {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 1rem;
+    color: #222;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.mission {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+.shop-link {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 1rem;
+    color: #222;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.shop-link:hover {
+    color: #666;
+}
+
+.image-section {
+    flex: 0 0 60%;
+    background-color: #f8f6f3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: hidden;
+    min-height: 650px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.split-image {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top -180px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    transform: translateX(0);
+}
+
+@media (max-width: 900px) {
+    .split-layout {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .text-section {
+        flex: none;
+        padding: 40px 20px;
+    }
+
+    .image-section {
+        flex: none;
+        height: 400px;
+    }
+
+    .main-heading {
+        font-size: 2rem;
+    }
+    
+    .split-image {
+        width: 100%;
+        height: 100%;
+        transform: translateX(0);
+        object-position: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .text-section {
+        padding: 30px 16px;
+    }
+
+    .image-section {
+        height: 300px;
+    }
+
+    .main-heading {
+        font-size: 1.8rem;
+    }
+
+    .header-text {
+        font-size: 0.8rem;
+    }
+}
+
+.section-divider {
+    border: none;
+    border-top: 1px solid #d1d1d1;
+    margin: 0 auto;
+    width: 96%;
+    height: 1px;
+    /* background: transparent; */ /* Remove this line to fix the double divider */
+    position: relative;
+}
+
+/* OVERLAPPING DIVIDER - This creates the overlapping effect */
+.section-divider.overlapping {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    border: none;
+    border-top: 1px solid #d1d1d1;
+    margin: 0 auto;
+    width: 96%;
+    height: 1px;
+    background: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.email-signup {
+    background-color: transparent;
+    padding: 20px 0 0 0;
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.email-container {
+    display: flex;
+    align-items: center;
+    width: 95%;    /* Change this value to adjust the length */
+    padding: 10px 0 12px 0;
+    margin: 0 auto;
+    border-bottom: 2px solid #d1d1d1;
+    position: relative;
+    background-color: transparent;
+}
+
+.email-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #222;
+    background: transparent;
+    padding: 0 0 0 20px;
+    margin: 0;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.email-input::placeholder {
+    color: #666;
+    font-size: 24px;
+}
+
+.email-submit {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #222;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+    width: 24px;
+    flex-shrink: 0;
+}
+
+.email-submit:hover {
+    color: #666;
+}
+
+.absolute-arrow {
+    position: absolute;
+    right: 20px;
+    top: 45%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 28px;
+    font-weight: 400;
+    color: #222;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+    width: 32px;
+    height: 32px;
+}
+
+.absolute-arrow:hover {
+    color: #666;
+}
+
+
+
+/* Footer Section */
+.footer {
+    background-color: #fff;
+    padding: 20px 0 40px 0;
+    margin-top: 20px;
+}
+
+.footer-content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    align-items: flex-start; /* Align items to the left */
+    position: relative; /* Add this line */
+}
+
+.footer-heading {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #666;
+}
+
+.footer-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0px;        /* Adjust this value to move payment methods up or down */
+    left: 0;
+}
+
+/* Remove these conflicting styles */
+.footer-content {
+    /* Remove the padding-top we added earlier */
+    padding-top: initial;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: #fff; /* Add background to ensure visibility */
+    padding: 10px 20px;
+}
+
+.payment-logo {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.payment-logo.amex {
+    background-color: #006fcf;
+}
+
+.payment-logo.mastercard {
+    background-color: #eb001b;
+}
+
+.payment-logo.visa {
+    background-color: #1a1f71;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.footer-bottom-row {
+    display: flex;
+    justify-content: space-between; /* Change from flex-start to space-between */
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+    position: relative;
+}
+
+.footer-bottom-row .copyright {
+    margin-left: 0;          /* Remove the left margin */
+    position: absolute;      /* Position absolutely */
+    left: 0;                /* Align to left */
+    bottom: -40px;              /* Align to bottom */
+}
+
+.footer-bottom-row .social-media {
+    position: absolute;     /* Keep absolute positioning */
+    right: -1050px;              /* Change this value to adjust horizontal position */
+    bottom: -40px;             /* Change this value to adjust vertical position */
+    transform: none;       /* Remove the vertical transform */
+}
+
+/* Update mobile responsiveness */
+@media (max-width: 600px) {
+    .footer-bottom-row {
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .footer-bottom-row .copyright,
+    .footer-bottom-row .social-media {
+        position: static;
+        margin: 0;
+    }
+}
+
+.copyright {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.copyright a {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.copyright a:hover {
+    color: #666;
+}
+
+
+
+/* social media section */
+.social-media {
+    display: flex;
+    gap: 12px;
+    position: static; /* Changed from fixed */
+    right: auto;
+    bottom: auto;
+    z-index: auto;
+    background: transparent;
+    padding: 0;
+}
+
+.social-icon {
+    font-family: "Font Awesome 6 Brands";
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+    padding: 5px;
+    display: inline-block;
+}
+
+.social-icon:hover {
+    color: #666;
+}
